@@ -1,0 +1,32 @@
+#!/bin/sh
+
+##
+# Calculates the frequency of each word in a regular text file.
+
+set -eu
+
+show_usage() {
+    echo "Counts the frequency of each word in a regular text file"
+    echo "Usage: ${PROG} FILE"
+}
+
+# ================
+# Main entry point
+# ================
+
+PROG=${0##*/}
+input="${1:-}"
+
+if [ -z "${input}" ]; then
+    show_usage
+    echo "Enter input file!"
+    exit 1
+elif [ ! -f "${input}" ]; then
+    echo "File ${input} not found!"
+    exit 1
+fi
+
+tr '[:upper:]' '[:lower:]' < "${input}" | \
+tr -s ' ' '\n' | sort | \
+uniq -c | sort -r | \
+awk '{print $2, $1}'
