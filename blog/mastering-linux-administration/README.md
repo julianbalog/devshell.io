@@ -11,4 +11,4 @@ In a new book from Packt Publishing I co-wrote with [Alex Calcatinge](https://de
 
 Stay tuned for this new title from [Packt Publishing](https://www.packtpub.com/)!
 
-<a href="https://www.packtpub.com/product/mastering-linux-administration/9781789954272" target="_blank"><img alt="Packt Publishing" src="./packt.jpg" height="60px"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.amazon.com/Mastering-Linux-Administration-comprehensive-configuring-ebook/dp/B093CF769M/" target="_blank"><img alt="Order on Amazon" src="./buy-on-amazon.png" height="60px"></a>
+<a href="https://www.packtpub.com/product/mastering-linux-administration/9781789954272" target="_blank"><img alt="Packt Publishing" src="./packt.jpg" height="60"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.amazon.com/Mastering-Linux-Administration-comprehensive-configuring-ebook/dp/B093CF769M/" target="_blank"><img alt="Order on Amazon" src="./buy-on-amazon.png" height="60"></a>
