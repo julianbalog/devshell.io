@@ -1,6 +1,8 @@
 Mastering Linux Administration
 ==============================
 
+_A comprehensive guide to installing, configuring, and maintaining Linux systems in the modern data center. Coming soon from Packt Publishing!_
+
 https://devshell.io/mastering-linux-administration/
 
 In a new book from Packt Publishing I co-wrote with [Alex Calcatinge](https://devopsroot.com/mastering-linux-administration/), we take a fresh look at Linux administration from the perspective of recent transformations in the modern data center, with workloads spanning from on-premises to public cloud infrastructures. To quote from the book's introductory notes:
