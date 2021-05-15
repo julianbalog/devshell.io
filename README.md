@@ -1,2 +1,3 @@
 # devshell.io
-The devshell.io online blog and related source code
+
+This repository contains the [devshell.io](https://devshell.io) online blog and related source code.
