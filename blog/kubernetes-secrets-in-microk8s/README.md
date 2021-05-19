@@ -208,7 +208,14 @@ value="107 56 115 ..."
 To get a readable and user-friendly representation of the related content, run the following command:
 
 ```
-echo "$value" | awk '{ for(i=1;i<=NF;i++) if ($i > 31 && $i < 127 || $i == 10) printf("%c", $i); else printf(" ", $i); print ""; }'
+echo "$value" | awk '{
+  for(i=1; i<=NF; i++)
+    if ($i > 31 && $i < 127 || $i == 10)
+      printf("%c", $i);
+    else
+      printf(" ", $i);
+  print "";
+}'
 ```
 
 As we can see, the output is not encrypted:
