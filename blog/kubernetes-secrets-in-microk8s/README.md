@@ -259,16 +259,23 @@ resources:
     - identity: {}
 ```
 
-As you may notice, we're using a reasonably strong encryption method with AES (https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) and [CBC](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_block_chaining_(CBC)). Before we go into configuring the MicroK8s API server to use encryption at rest, let's find out more about the `kube-apiserver` configuration. Look up the `kubelite` process with the following command:
+As you may notice, we're using a reasonably strong encryption method with [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) and [CBC](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_block_chaining_(CBC)). Before we go into configuring the MicroK8s API server to use encryption at rest, let's find out more about the `kube-apiserver` configuration. Look up the `kubelite` process with the following command:
 
 ```
 pgrep -an kubelite
 ```
 
-In our case, the output is:
+In our case, the output is (reformatted for better view):
 
 ```
-16119 /snap/microk8s/2210/kubelite --scheduler-args-file=/var/snap/microk8s/2210/args/kube-scheduler --controller-manager-args-file=/var/snap/microk8s/2210/args/kube-controller-manager --proxy-args-file=/var/snap/microk8s/2210/args/kube-proxy --kubelet-args-file=/var/snap/microk8s/2210/args/kubelet --apiserver-args-file=/var/snap/microk8s/2210/args/kube-apiserver --kubeconfig-file=/var/snap/microk8s/2210/credentials/client.config --start-control-plane=true
+/snap/microk8s/2210/kubelite \
+  --scheduler-args-file=/var/snap/microk8s/2210/args/kube-scheduler \
+  --controller-manager-args-file=/var/snap/microk8s/2210/args/kube-controller-manager \
+  --proxy-args-file=/var/snap/microk8s/2210/args/kube-proxy \
+  --kubelet-args-file=/var/snap/microk8s/2210/args/kubelet \
+  --apiserver-args-file=/var/snap/microk8s/2210/args/kube-apiserver \
+  --kubeconfig-file=/var/snap/microk8s/2210/credentials/client.config \
+  --start-control-plane=true
 ```
 
 We can see that the `--apiserver-args-file` option parameter points to `/var/snap/microk8s/2210/args/kube-apiserver`. Edit the `/var/snap/microk8s/2210/args/kube-apiserver` file (e.g., `sudo vi ...`) and add the following line, pointing the encryption provider configuration to our `k8s-crypto.yaml` file:
@@ -289,7 +296,9 @@ Our old secrets, including `hello-login`, would still be unencrypted, since secr
 kubectl get secrets --all-namespaces -o json | kubectl replace -f -
 ```
 
-Depending on the size of your cluster, the command may take a while, or you may have to run it in smaller batches, targeting individual namespaces. Alternatively, you can delete the `hello-login` secret (`kubectl delete secret hello-login`) and re-create it. Now, let's retrace the steps described in the _MicroK8s Secrets and Dqlite_ section and retrieve our `hello-login` secret again. You'll see that, this time the secret is encrypted.
+Depending on the size of your cluster, the command may take a while, or you may have to run it in smaller batches, targeting individual namespaces. Alternatively, you can delete the `hello-login` secret (`kubectl delete secret hello-login`) and re-create it.
+
+Now, let's retrace the steps described in the _MicroK8s Secrets and Dqlite_ section and retrieve our `hello-login` secret again. You'll see that, this time the secret is encrypted.
 
 MicroK8s could be a viable solution for a low footprint Kubernetes cluster and, with a bit of tinkering, you can have your secrets encrypted at rest.
 
