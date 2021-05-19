@@ -3,6 +3,8 @@ Kubernetes Secrets in MicroK8s
 
 _Deep dive into how secrets are managed and stored in MicroK8s, noting some of the related security concerns_
 
+https://devshell.io/kubernetes-secrets-in-microk8s/
+
 If you are looking for a desktop version of Kubernetes in your everyday development work on your laptop or workstation, you may consider MicroK8s. [MicroK8s](https://microk8s.io/) is a low footprint, minimal Kubernetes distribution (by [Canonical](https://canonical.com/)) for developers, cloud, clusters, Edge, and IoT.
 
 One of the main features of MicroK8s is the built-in high availability, which could make it an attractive option in production deployments. As you may expect, production environments are subject to stricter security requirements. In this article, we'll look at how secrets are stored in MicroK8s and how secure they might be.
