@@ -307,7 +307,7 @@ kubectl get secrets --all-namespaces -o json | kubectl replace -f -
 
 Depending on the size of your cluster, the command may take a while, or you may have to run it in smaller batches, targeting individual namespaces. Alternatively, you can delete the `hello-login` secret (`kubectl delete secret hello-login`) and re-create it.
 
-Now, let's retrace the steps described in the _MicroK8s Secrets and Dqlite_ section and retrieve our `hello-login` secret again. You'll see that, this time the secret is encrypted.
+Now, let's retrace the steps described in the [MicroK8s Secrets and Dqlite](#microk8s-secrets-and-dqlite) section and retrieve our `hello-login` secret again. You'll see that, this time the secret is encrypted.
 
 MicroK8s could be a viable solution for a low footprint Kubernetes cluster and, with a bit of tinkering, you can have your secrets encrypted at rest.
 
