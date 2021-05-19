@@ -220,7 +220,7 @@ echo "$value" | awk '{
 }'
 ```
 
-As we can see, the output is not encrypted:
+As we can notice, the output is not encrypted:
 
 ```
 k8s 
