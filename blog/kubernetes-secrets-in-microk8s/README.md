@@ -134,7 +134,7 @@ echo "YWRtaW4=" | base64 --decode && echo
 echo "UEBzc3cwcmQ=" | base64 --decode && echo
 ```
 
-So far, so good. As Kubernetes administrators, we are entitled to view and handle secrets at our own discretion. But are these secrets really secure? We know they are stored in MicroK8s' persistent storage. Standard Kubernetes distributions use `etcd` as their database. MicroK8s uses [Dqlite](https://dqlite.io/) as the default data store. `Dqlite` ("Distributed SQLite") is a fault-tolerant implementation of SQLite, a ligthweight, fast, embedded, and persistent SQL database, written in C. We can, of course, configure MicroK8s to use `etcd`, but the question still remains: are the secrets encrypted? This question is among the very first we'd be asked in the security review of a Kubernetes deployment.
+So far, so good. As Kubernetes administrators, we are entitled to view and handle secrets at our own discretion. But are these secrets really secure? We know they are stored in MicroK8s' persistent storage. Standard Kubernetes distributions use `etcd` as their backend store. MicroK8s uses [Dqlite](https://dqlite.io/) for storage. `Dqlite` ("Distributed SQLite") is a fault-tolerant implementation of SQLite, a ligthweight, fast, embedded, and persistent SQL database, written in C. We can, of course, configure MicroK8s to use `etcd`, but the question still remains: are the secrets encrypted? This question is among the very first we'd be asked in the security review of a Kubernetes deployment.
 
 So, let's take a closer look at our secrets in MicroK8s and `Dqlite`.
 
