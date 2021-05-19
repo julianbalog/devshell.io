@@ -201,13 +201,13 @@ Here's an excerpt from the output:
 /registry/secrets/default/hello-login|[107 56 115 0 ...]
 ```
 
-The output hints to a key-value pair, with the key of `/registry/secrets/default/hello-login` and the value pointing to a sequence of ASCII character codes: `107=k`, `56=8`, `115=s`, etc. We can immediately notice that `k8s` doesn't look like an encrypted text. Let's copy the entire sequence of ASCII codes within the square brackets and assign it to a variable `value` (showing only an excerpt below):
+The output hints to a key-value pair, with the key of `/registry/secrets/default/hello-login` and the value pointing to a sequence of ASCII character codes: `107=k`, `56=8`, `115=s`, etc. Let's copy the entire sequence of ASCII codes within the square brackets and assign it to a variable `value` (showing only an excerpt below):
 
 ```
 value="107 56 115 ..."
 ```
 
-To get a readable and user-friendly representation of the related content, run the following command:
+To get a more readable and user-friendly representation of the related content, run the following command:
 
 ```
 echo "$value" | awk '{
@@ -234,7 +234,7 @@ k8s
  username  admin  Opaque  "
 ```
 
-While unencrypted secrets could be safe within the security context of the MicroK8s application domain, an attacker could still gain access to the underlying storage and read the data. This is where "encryption at rest" becomes a requirement, to ensure the data is encrypted on disk. Let's look at how to encrypt our secrets in MicroK8s.
+While unencrypted secrets could be safe within the security context of the MicroK8s application domain, an attacker could still gain access to the underlying storage and read the data. This is where "encryption at rest" becomes relevant, to ensure the data is encrypted on disk. Let's look at how to encrypt our secrets in MicroK8s.
 
 Encrypting Secrets at Rest in MicroK8s
 --------------------------------------
@@ -299,7 +299,7 @@ Save the file and restart the MicroK8s `daemon-kubelite` service:
 sudo systemctl restart snap.microk8s.daemon-kubelite
 ```
 
-Our old secrets, including `hello-login`, would still be unencrypted, since secrets are encrypted on write. The following command performs an in-place update of all secrets in MicroK8s, and re-encrypt them according to the encryption provider we just configured:
+Our old secrets, including `hello-login`, would still be unencrypted, since secrets are only encrypted on write. The following command performs an in-place update of all secrets in MicroK8s, and re-encrypt them according to the encryption provider we just configured:
 
 ```
 kubectl get secrets --all-namespaces -o json | kubectl replace -f -
