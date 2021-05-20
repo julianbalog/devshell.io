@@ -207,7 +207,7 @@ The output hints to a key-value pair, with the key of `/registry/secrets/default
 value="107 56 115 ..."
 ```
 
-To get a more readable and user-friendly representation of the related content, run the following command:
+To get a more readable and user-friendly representation of the related content, run the following command to decode the sequence of ASCII character codes into plain text:
 
 ```
 echo "$value" | awk '{
