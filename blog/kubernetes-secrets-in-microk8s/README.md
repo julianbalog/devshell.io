@@ -65,6 +65,13 @@ microk8s-vm   Ready    <none>   121m   v1.21.0-3+121713cef81e03
 
 ### Installing MicroK8s on Ubuntu
 
+Make sure `swap` is turned off:
+
+```
+sudo swapoff -a
+sudo sed -i '/\s*swap\s*/s/^\(.*\)$/# \1/g' /etc/fstab
+```
+
 On Ubuntu we use Snap to install MicroK8s. The following command installs version `1.21` of MicroK8s:
 
 ```
@@ -72,6 +79,13 @@ sudo snap install microk8s --classic --channel=1.21/stable
 ```
 
 ### Installing MicroK8s on RHEL/CentOS
+
+Make sure `swap` is turned off:
+
+```
+sudo swapoff -a
+sudo sed -i '/\s*swap\s*/s/^\(.*\)$/# \1/g' /etc/fstab
+```
 
 On CentOS  7.6 and newer, we need to install the Snap package manager from the EPEL (Extra Packages for Enterprise Linux) repository:
 
